@@ -95,7 +95,7 @@
         /* 商城網格 */
         .store-grid, .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -108,7 +108,15 @@
             transition: 0.3s;
         }
         .product-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .product-img { width: 100%; height: 220px; background-color: #333; object-fit: cover; }
+        
+        /* 修改此處：完整顯示不裁切照片 */
+        .product-img { 
+            width: 100%; 
+            height: 320px; 
+            background-color: #121212; 
+            object-fit: contain; 
+            padding-top: 10px;
+        }
         
         /* 多圖縮圖樣式 */
         .thumb-list {
@@ -204,7 +212,6 @@
             <!-- 商品 1 (含多圖切換) -->
             <div class="product-card">
                 <img src="000001.jpg" alt="客製化 機械哥吉拉" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
-                <!-- 下方小縮圖 (點擊可切換上方大圖) -->
                 <div class="thumb-list">
                     <img src="000001.jpg" class="thumb active" onclick="changeImg(this)">
                     <img src="000002.jpg" class="thumb" onclick="changeImg(this)">
