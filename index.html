@@ -109,13 +109,13 @@
         }
         .product-card:hover { border-color: var(--primary); transform: translateY(-5px); }
         
-        /* 修改此處：完整顯示不裁切照片 */
+        /* 強制完整顯示全圖、不裁切 */
         .product-img { 
-            width: 100%; 
-            height: 320px; 
-            background-color: #121212; 
-            object-fit: contain; 
-            padding-top: 10px;
+            width: 100% !important; 
+            height: 320px !important; 
+            background-color: #121212 !important; 
+            object-fit: contain !important; 
+            padding: 10px 0 !important;
         }
         
         /* 多圖縮圖樣式 */
