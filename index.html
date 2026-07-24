@@ -95,7 +95,7 @@
         /* 商城網格 */
         .store-grid, .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -108,7 +108,31 @@
             transition: 0.3s;
         }
         .product-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .product-img { width: 100%; height: 200px; background-color: #333; object-fit: cover; }
+        .product-img { width: 100%; height: 220px; background-color: #333; object-fit: cover; }
+        
+        /* 多圖縮圖樣式 */
+        .thumb-list {
+            display: flex;
+            gap: 8px;
+            padding: 8px 12px;
+            justify-content: center;
+            background-color: #121212;
+        }
+        .thumb {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+        .thumb:hover, .thumb.active {
+            border-color: var(--primary);
+            opacity: 1;
+        }
+
         .product-info { padding: 15px; }
         .product-title { font-size: 1.2em; color: var(--primary); margin: 0 0 10px 0; }
         .product-desc { font-size: 0.9em; color: var(--text-gray); margin-bottom: 15px; }
@@ -177,23 +201,30 @@
         <p style="color: var(--text-gray);">現貨與文創商品，看中喜歡的請截圖私訊 LINE 購買！</p>
         
         <div class="store-grid">
+            <!-- 商品 1 (含多圖切換) -->
             <div class="product-card">
-                <img src="product1.jpg" alt="商品圖片" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
+                <img src="000001.jpg" alt="客製化 機械哥吉拉" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
+                <!-- 下方小縮圖 (點擊可切換上方大圖) -->
+                <div class="thumb-list">
+                    <img src="000001.jpg" class="thumb active" onclick="changeImg(this)">
+                    <img src="000002.jpg" class="thumb" onclick="changeImg(this)">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-title">3D 列印關節龍</h3>
-                    <p class="product-desc">一體成型免組裝，關節靈活可動，採用無毒 PLA 材質印製。</p>
-                    <div class="product-price">NT$ 350</div>
-                    <button class="buy-btn" onclick="buyItem('3D 列印關節龍', 350)">聯絡購買</button>
+                    <h3 class="product-title">客製化 機械哥吉拉</h3>
+                    <p class="product-desc">關節靈活可動，採用PETG材質印製。</p>
+                    <div class="product-price">NT$ 5000~50000不等</div>
+                    <button class="buy-btn" onclick="buyItem('客製化 機械哥吉拉', '5000~50000不等')">聯絡購買</button>
                 </div>
             </div>
 
+            <!-- 商品 2 -->
             <div class="product-card">
-                <img src="product2.jpg" alt="商品圖片" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
+                <img src="000002.jpg" alt="客製化浮雕月球燈" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
                 <div class="product-info">
                     <h3 class="product-title">客製化浮雕月球燈</h3>
                     <p class="product-desc">提供照片即可客製化您的專屬月球燈，含底座與 LED 燈芯。</p>
                     <div class="product-price">NT$ 890</div>
-                    <button class="buy-btn" onclick="buyItem('客製化浮雕月球燈', 890)">聯絡購買</button>
+                    <button class="buy-btn" onclick="buyItem('客製化浮雕月球燈', '890')">聯絡購買</button>
                 </div>
             </div>
         </div>
@@ -212,9 +243,8 @@
         <div id="portfolio-content" style="display: none;">
             <h2 style="color: var(--primary); border-bottom: 2px solid #333; padding-bottom: 10px;">✨ 歷年代印精選</h2>
             <div class="portfolio-grid">
-                <img src="work1.jpg" alt="作品" style="width: 100%; border-radius: 8px; border: 1px solid #444;" onerror="this.src='https://via.placeholder.com/400x400?text=精彩作品1'">
-                <img src="work2.jpg" alt="作品" style="width: 100%; border-radius: 8px; border: 1px solid #444;" onerror="this.src='https://via.placeholder.com/400x400?text=精彩作品2'">
-                <img src="work3.jpg" alt="作品" style="width: 100%; border-radius: 8px; border: 1px solid #444;" onerror="this.src='https://via.placeholder.com/400x400?text=精彩作品3'">
+                <img src="000001.jpg" alt="作品" style="width: 100%; border-radius: 8px; border: 1px solid #444;" onerror="this.src='https://via.placeholder.com/400x400?text=精彩作品1'">
+                <img src="000002.jpg" alt="作品" style="width: 100%; border-radius: 8px; border: 1px solid #444;" onerror="this.src='https://via.placeholder.com/400x400?text=精彩作品2'">
             </div>
         </div>
     </div>
@@ -225,6 +255,14 @@
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             if (evt) evt.currentTarget.classList.add('active');
+        }
+
+        /* 點擊切換商品圖片 */
+        function changeImg(thumb) {
+            const card = thumb.closest('.product-card');
+            card.querySelector('.product-img').src = thumb.src;
+            card.querySelectorAll('.thumb').forEach(img => img.classList.remove('active'));
+            thumb.classList.add('active');
         }
 
         function buyItem(itemName, itemPrice) {
