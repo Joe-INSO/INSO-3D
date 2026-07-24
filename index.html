@@ -132,11 +132,11 @@
 </head>
 <body>
 
-    <!-- 導覽列 -->
+    <!-- 頂部導覽列 -->
     <div class="navbar">
-        <button class="nav-btn active" onclick="switchTab('home')">首頁 / 代印報價</button>
-        <button class="nav-btn" onclick="switchTab('store')">印獸商城</button>
-        <button class="nav-btn" onclick="switchTab('portfolio')">私密作品集</button>
+        <button class="nav-btn active" onclick="switchTab('home', event)">首頁 / 代印報價</button>
+        <button class="nav-btn" onclick="switchTab('store', event)">印獸商城</button>
+        <button class="nav-btn" onclick="switchTab('portfolio', event)">私密作品集</button>
     </div>
 
     <!-- 區塊 1：首頁 / 代印服務 -->
@@ -153,11 +153,11 @@
                4. 我們將為您進行切片分析並提供精準報價！</p>
         </div>
 
-        <!-- LINE 加好友雙功能區塊 (掃碼 + 按鈕) -->
+        <!-- LINE 加好友雙功能區塊 -->
         <div class="line-box">
             <div style="margin-bottom: 20px;">
                 <p style="color: var(--text-gray); font-size: 0.95em; margin-bottom: 12px;">📷 電腦瀏覽者：開啟手機相機掃描 QR Code</p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://line.me/R/ti/p/@556vwnf" 
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://lin.ee/o6SIkav" 
                      alt="LINE QR Code" 
                      style="width: 180px; height: 180px; border-radius: 10px; border: 4px solid #ffffff;">
             </div>
@@ -166,7 +166,7 @@
 
             <div>
                 <p style="color: var(--text-gray); font-size: 0.95em; margin-bottom: 12px;">📱 手機瀏覽者：點擊下方按鈕直接開啟 LINE</p>
-                <a href="https://line.me/R/ti/p/@556vwnf" target="_blank" class="line-btn">點我加 LINE 傳檔報價</a>
+                <a href="https://lin.ee/o6SIkav" target="_blank" class="line-btn">點我加 LINE 傳檔報價</a>
             </div>
         </div>
     </div>
@@ -220,11 +220,11 @@
     </div>
 
     <script>
-        function switchTab(tabId) {
+        function switchTab(tabId, evt) {
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
+            if (evt) evt.currentTarget.classList.add('active');
         }
 
         function buyItem(itemName, itemPrice) {
@@ -233,7 +233,7 @@
 
         function checkPassword() {
             const input = document.getElementById('pwdInput').value;
-            const correctPassword = "inso"; // 密碼設定為 inso
+            const correctPassword = "inso"; // 預設密碼為 inso
 
             if (input === correctPassword) {
                 document.getElementById('pwd-gate').style.display = 'none';
