@@ -158,7 +158,7 @@
         }
         .pwd-input {
             padding: 10px; font-size: 1em; width: 80%; margin-bottom: 15px;
-            background: #121212; color: #fff; border: 1px solid #555;
+            background: #121212; color: #fff; border: 1px solid #555; border-radius: 5px;
         }
 
         /* 作品集分類篩選按鈕樣式 */
@@ -269,30 +269,21 @@
                 </div>
             </div>
 
-            <!-- 商品 2 -->
+            <!-- 備用商品位置 (暫時隱藏) -->
             <!-- 
             <div class="product-card">
-                <img src="000001.jpg" alt="客製化 機械哥吉拉" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
-                <div class="thumb-list">
-                    <img src="000001.jpg" class="thumb active" onclick="changeImg(this)">
-                    <img src="000002.jpg" class="thumb" onclick="changeImg(this)">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">客製化 機械哥吉拉</h3>
-                    <p class="product-desc">關節靈活可動，採用PETG材質印製。</p>
-                    <div class="product-price">NT$ 5000~50000不等</div>
-                    <button class="buy-btn" onclick="buyItem('客製化 機械哥吉拉', '5000~50000不等')">聯絡購買</button>
-                </div>
+                <img src="000002.jpg" alt="客製化商品" class="product-img">
             </div>
+            -->
         </div>
     </div>
- -->
+
     <!-- 區塊 3：密碼保護作品集 -->
     <div id="portfolio" class="section">
         <div id="pwd-gate" class="password-gate">
             <h2 style="color: var(--primary); margin-top:0;">🔒 專屬作品集</h2>
             <p style="color: var(--text-gray); margin-bottom: 20px;">請輸入訪問密碼以檢視代印成品</p>
-            <input type="password" id="pwdInput" class="pwd-input" placeholder="請輸入密碼...">
+            <input type="password" id="pwdInput" class="pwd-input" placeholder="請輸入密碼..." onkeydown="if(event.key==='Enter') checkPassword()">
             <button class="buy-btn" onclick="checkPassword()">確認進入</button>
             <p id="pwdError" style="color: #ff4444; display: none; margin-top: 10px;">密碼錯誤，請重試。</p>
         </div>
@@ -305,19 +296,19 @@
                 <button class="filter-btn active" onclick="filterPortfolio('all', event)">全部作品</button>
                 <button class="filter-btn" onclick="filterPortfolio('godzilla', event)">🦖 哥吉拉系列</button>
                 <button class="filter-btn" onclick="filterPortfolio('kuromi', event)">💜 庫洛米系列</button>
-                <button class="filter-btn" onclick="filterPortfolio('baeja', event)">💜 杯架系列</button>
+                <button class="filter-btn" onclick="filterPortfolio('baeja', event)">☕ 杯架系列</button>
                 <button class="filter-btn" onclick="filterPortfolio('other', event)">🎨 其他精選</button>
             </div>
 
             <!-- 作品圖片展示區 -->
             <div class="portfolio-grid">
-                <!-- 哥吉拉範例圖片 (data-category="godzilla") -->
-                <img src="000001.jpg" data-category="godzilla" class="portfolio-item" alt="機械哥吉拉" onerror="this.src='https://via.placeholder.com/300x300?text=哥吉拉作品'">
-                <img src="000002.jpg" data-category="godzilla" class="portfolio-item" alt="機械哥吉拉" onerror="this.src='https://via.placeholder.com/300x300?text=哥吉拉作品'">
+                <!-- 哥吉拉系列 -->
+                <img src="000001.jpg" data-category="godzilla" class="portfolio-item" alt="機械哥吉拉" onerror="this.src='https://via.placeholder.com/300x300?text=哥吉拉作品1'">
+                <img src="000002.jpg" data-category="godzilla" class="portfolio-item" alt="機械哥吉拉" onerror="this.src='https://via.placeholder.com/300x300?text=哥吉拉作品2'">
                 
-                <!-- 杯架範例圖片 (data-category="kuromi") -->
-                <img src="000003.jpg" data-category="baeja" class="portfolio-item" alt="杯架" onerror="this.src='https://via.placeholder.com/300x300?text=杯架作品'">
-                <img src="000004.jpg" data-category="baeja" class="portfolio-item" alt="杯架" onerror="this.src='https://via.placeholder.com/300x300?text=杯架作品'">
+                <!-- 杯架系列 -->
+                <img src="000003.jpg" data-category="baeja" class="portfolio-item" alt="杯架" onerror="this.src='https://via.placeholder.com/300x300?text=杯架作品1'">
+                <img src="000004.jpg" data-category="baeja" class="portfolio-item" alt="杯架" onerror="this.src='https://via.placeholder.com/300x300?text=杯架作品2'">
             </div>
         </div>
     </div>
