@@ -270,18 +270,23 @@
             </div>
 
             <!-- 商品 2 -->
+            <!-- 
             <div class="product-card">
-                <img src="000002.jpg" alt="客製化浮雕月球燈" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
+                <img src="000001.jpg" alt="客製化 機械哥吉拉" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
+                <div class="thumb-list">
+                    <img src="000001.jpg" class="thumb active" onclick="changeImg(this)">
+                    <img src="000002.jpg" class="thumb" onclick="changeImg(this)">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-title">客製化浮雕月球燈</h3>
-                    <p class="product-desc">提供照片即可客製化您的專屬月球燈，含底座與 LED 燈芯。</p>
-                    <div class="product-price">NT$ 890</div>
-                    <button class="buy-btn" onclick="buyItem('客製化浮雕月球燈', '890')">聯絡購買</button>
+                    <h3 class="product-title">客製化 機械哥吉拉</h3>
+                    <p class="product-desc">關節靈活可動，採用PETG材質印製。</p>
+                    <div class="product-price">NT$ 5000~50000不等</div>
+                    <button class="buy-btn" onclick="buyItem('客製化 機械哥吉拉', '5000~50000不等')">聯絡購買</button>
                 </div>
             </div>
         </div>
     </div>
-
+ -->
     <!-- 區塊 3：密碼保護作品集 -->
     <div id="portfolio" class="section">
         <div id="pwd-gate" class="password-gate">
@@ -339,7 +344,7 @@
 
         function checkPassword() {
             const input = document.getElementById('pwdInput').value;
-            const correctPassword = "inso"; // 預設密碼為 inso
+            const correctPassword = "81778188"; // 預設密碼為 inso
 
             if (input === correctPassword) {
                 document.getElementById('pwd-gate').style.display = 'none';
