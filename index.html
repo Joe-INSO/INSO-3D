@@ -145,9 +145,20 @@
         .product-title { font-size: 1.2em; color: var(--primary); margin: 0 0 10px 0; }
         .product-desc { font-size: 0.9em; color: var(--text-gray); margin-bottom: 15px; }
         .product-price { font-size: 1.3em; font-weight: bold; color: #fff; margin-bottom: 15px; }
+        
+        /* 購買按鈕樣式 (支援 <a> 連結) */
         .buy-btn {
-            background-color: var(--primary); color: #000; border: none;
-            padding: 10px 20px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%;
+            display: block;
+            background-color: var(--primary); 
+            color: #000; 
+            text-decoration: none;
+            padding: 10px 20px; 
+            font-weight: bold; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            width: 100%;
+            box-sizing: border-box;
+            transition: 0.3s;
         }
         .buy-btn:hover { background-color: #d9531e; color: #fff;}
 
@@ -251,10 +262,10 @@
     <!-- 區塊 2：商城 -->
     <div id="store" class="section">
         <h2 style="color: var(--primary); border-bottom: 2px solid #333; padding-bottom: 10px;">🛒 印獸商城</h2>
-        <p style="color: var(--text-gray);">現貨與文創商品，看中喜歡的請截圖私訊 LINE 購買！</p>
+        <p style="color: var(--text-gray);">現貨與文創商品，點擊按鈕直接前往 7-11 賣貨便下單購買！</p>
         
         <div class="store-grid">
-            <!-- 商品 1 (含多圖切換) -->
+            <!-- 商品 1 (直連賣貨便專屬賣場) -->
             <div class="product-card">
                 <img src="000001.jpg" alt="客製化 機械哥吉拉" class="product-img" onerror="this.src='https://via.placeholder.com/300x200?text=商品圖片'">
                 <div class="thumb-list">
@@ -265,16 +276,11 @@
                     <h3 class="product-title">客製化 機械哥吉拉</h3>
                     <p class="product-desc">關節靈活可動，採用PETG材質印製。</p>
                     <div class="product-price">NT$ 5000~50000不等</div>
-                    <button class="buy-btn" onclick="buyItem('客製化 機械哥吉拉', '5000~50000不等')">聯絡購買</button>
+                    
+                    <!-- 專屬 7-11 賣貨便連結 -->
+                    <a href="https://myship.7-11.com.tw/general/detail/GM2607303697026" target="_blank" class="buy-btn">📦 前往 7-11 賣貨便下單</a>
                 </div>
             </div>
-
-            <!-- 備用商品位置 (暫時隱藏) -->
-            <!-- 
-            <div class="product-card">
-                <img src="000002.jpg" alt="客製化商品" class="product-img">
-            </div>
-            -->
         </div>
     </div>
 
@@ -329,13 +335,9 @@
             thumb.classList.add('active');
         }
 
-        function buyItem(itemName, itemPrice) {
-            alert(`您選擇了【${itemName}】(NT$ ${itemPrice})。\n\n請截圖此頁面，點擊「首頁」加入我們的 LINE 官方帳號進行訂購與付款！`);
-        }
-
         function checkPassword() {
             const input = document.getElementById('pwdInput').value;
-            const correctPassword = "81778188"; // 預設密碼為 inso
+            const correctPassword = "inso"; // 預設密碼為 inso
 
             if (input === correctPassword) {
                 document.getElementById('pwd-gate').style.display = 'none';
@@ -347,11 +349,9 @@
 
         /* 私密作品集：分類篩選功能 */
         function filterPortfolio(category, evt) {
-            // 切換按鈕高亮樣式
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             if (evt) evt.currentTarget.classList.add('active');
 
-            // 篩選照片顯示
             const items = document.querySelectorAll('.portfolio-item');
             items.forEach(item => {
                 if (category === 'all' || item.getAttribute('data-category') === category) {
